@@ -1,5 +1,5 @@
 {
-  "name": "rede_social_teste",
+  "name": "",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -28,9 +28,7 @@
     "test": ""
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "express": "^4.21.2",
-    "mongodb": "^6.12.0",
-    "multer": "^1.4.5-lts.1"
+    "mongodb": "^6.11.0"
   }
 }
