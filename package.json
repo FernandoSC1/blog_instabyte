@@ -2,7 +2,7 @@
   "name": "",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "license": "AGPL-version-3.0",
   "private": false,
@@ -24,7 +24,6 @@
   },
   "contributors": [],
   "scripts": {
-    "start": "npm install && node server.js",
     "dev": "node --watch --env-file=.env server.js",
     "test": ""
   },
