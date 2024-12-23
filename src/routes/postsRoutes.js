@@ -30,11 +30,6 @@ const routes = (app) => {
   // Permite que o servidor interprete corpos de requisições no formato JSON
   app.use(express.json());
   app.use(cors(corsOptions));
-
-  app.get('/', (req, res) => {
-    // Envia o arquivo HTML para a resposta
-    res.sendFile(path.join(__dirname, 'index.html'));
-  });
   
   // Rota para recuperar uma lista de todos os posts
   app.get("/posts", listarPosts); // Chama a função controladora apropriada
