@@ -68,7 +68,7 @@ const routes = (app) => {
       // Exibe todas as imagens com seus nomes em uma única página HTML
       res.send(`
         <html>
-          <head><title>Imagens PNG</title></head>
+          <head><title>Gerenciador</title></head>
           <body>
             <h1>Gerenciador de IMAGENS</h1>
             <div>${imagesHtml}</div>
