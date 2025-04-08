@@ -2,6 +2,8 @@ import express from "express"; // Importa o framework Express para criar a aplic
 import multer from "multer"; // Importa o Multer para lidar com uploads de arquivos
 import { listarPosts, postarNovoPost, /*uploadImagem, atualizarNovoPost,*/ deletarUmPost } from "../controllers/postsController.js"; // Importa as funções controladoras para lidar com a lógica dos posts
 import cors from "cors";
+import fs from 'fs';
+import path from 'path';
 
 const corsOptions = {
   origin: '*',
@@ -43,6 +45,38 @@ const routes = (app) => {
   //app.put("/upload/:id", atualizarNovoPost);
 
   app.delete("/posts/:id", deletarUmPost);
+
+  app.get("/uploads", (req, res) => {
+    fs.readdir('uploads', (err, files) => {
+      if (err) {
+        return res.status(500).json({ error: 'Erro ao listar arquivos' });
+      }
+
+      // Filtra apenas arquivos PNG
+      const pngFiles = files.filter(file => file.endsWith('.png'));
+
+      // Gera o HTML para exibir as imagens com seus nomes
+      const imagesHtml = pngFiles.map(file => {
+        return `
+          <div style="display: inline-block; margin: 10px; text-align: center;">
+            <img src="/uploads/${file}" alt="${file}" style="width: 200px;" />
+            <div>${file}</div>
+          </div>
+        `;
+      }).join('');
+
+      // Exibe todas as imagens com seus nomes em uma única página HTML
+      res.send(`
+        <html>
+          <head><title>Imagens PNG</title></head>
+          <body>
+            <h1>Gerenciador de IMAGENS</h1>
+            <div>${imagesHtml}</div>
+          </body>
+        </html>
+      `);
+    });
+  });
 };
 
 export default routes;
